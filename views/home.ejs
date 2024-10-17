@@ -1,11 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    This is My Home Page
-</body>
-</html>
+<div class="w-full">
+    <a  class="btn btn-primary  float-end " href="#">
+        <i class="fa-solid fa-user"></i>
+        Thêm người dùng
+     </a>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">STT</th>
+            <th scope="col">Username</th>
+            <th scope="col">Displayname</th>
+            <th scope="col">Address</th>
+            <th scope="col">Sex</th>
+            <th scope="col">email</th>
+            <th scope="col">Role</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% for(let i=0; i < rows.length; i++){ %>
+            <tr>
+                <th scope="row">
+                    <%= i + 1 %>
+                </th>
+                <td>
+                    <%= rows[i].username %>
+                </td>
+                <td>
+                    <%= rows[i].fullname %>
+                </td>
+                <td>
+                    <%= rows[i].address %>
+                </td>
+                <td>
+                    <%= rows[i].sex===1 ? "Nam" : "Nữ" %>
+                </td>
+                <td>
+                    <%= rows[i].email %>
+                </td>
+                <td>
+                    <%= rows[i].role %>
+                </td>
+                <td>
+                    <a class="fa-solid fa-eye" href="#"></a>
+                    <a class="fa-solid fa-pen-to-square" href="#"></a>
+                    <a class="fa-solid fa-trash" href="#"></a>
+                </td>
+            </tr>
+            <% } %>
+    </tbody>
+</table>
