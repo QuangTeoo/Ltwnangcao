@@ -1,0 +1,33 @@
+<form class="row g-3 mt-3" action="/home/update" method="POST">
+    <input type="hidden" name="oldUsername" value="<%= user.username %>">
+    <div class="col-md-6">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" class="form-control" id="username" name="username" value="<%= user.username %>" >
+    </div>
+    <div class="col-md-6">
+        <label for="inputEmail4" class="form-label">Email</label>
+        <input type="email" class="form-control" id="inputEmail4" name="email" value="<%= user.email %>">
+    </div>
+    <div class="col-md-6">
+        <label for="displayname" class="form-label">Displayname</label>
+        <input type="text" class="form-control" id="displayname" name="fullname" value="<%= user.fullname %>">
+    </div>
+    <!-- <div class="col-md-6">
+      <label for="date" class="form-label">Birth Day</label>
+      <input type="date" class="form-control" id="date" name="birthdate" value="<%= user.birthdate %>">
+    </div> -->
+    <div class="col-md-6">
+        <label for="sex" class="form-label">Sex</label>
+        <select class="form-control" id="sex" name="sex" required>
+            <option value="0" <%=user.sex=== 1 ? 'selected' : '' %>>Nam</option>
+            <option value="1" <%=user.sex=== 0 ? 'selected' : '' %>>Nữ</option>
+        </select>
+    </div>
+    <div class="col-12">
+        <label for="inputAddress" class="form-label">Địa chỉ</label>
+        <input type="text" class="form-control" id="inputAddress" name="address" value="<%= user.address %>">
+    </div>
+    <div class="d-flex justify-content-center">
+        <button type="submit" class="btn btn-primary">Update User</button>
+    </div>
+</form>

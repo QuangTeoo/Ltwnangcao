@@ -3,9 +3,14 @@ import dotenv from "dotenv/config";
 import { getParamsURL, getPath } from "./getURL";
 import viewEngine from "./viewEngine";
 import WebRoute from "./Route/webRoute.js"
+import bodyParser from "body-parser";
 const app = express();
 const port = process.env.PORT;
 viewEngine(app);
+app.use(express.static("public"));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
 // app.get("/", (req, res) => {
 //   res.send("Hello World!");
 // });

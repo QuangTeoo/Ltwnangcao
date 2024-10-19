@@ -1,8 +1,8 @@
 <div class="w-full">
-    <a  class="btn btn-primary  float-end " href="#">
+    <a class="btn btn-primary  float-end " href="/home/add">
         <i class="fa-solid fa-user"></i>
         Thêm người dùng
-     </a>
+    </a>
 </div>
 <table class="table">
     <thead>
@@ -42,9 +42,15 @@
                     <%= rows[i].role %>
                 </td>
                 <td>
-                    <a class="fa-solid fa-eye" href="#"></a>
-                    <a class="fa-solid fa-pen-to-square" href="#"></a>
-                    <a class="fa-solid fa-trash" href="#"></a>
+                    <a href="/home/detail?username=<%= rows[i].username %>">
+                        <i class="fa-solid fa-eye"></i>
+                    </a>
+                    <a class="icon-link" href="/home/update?username=<%= rows[i].username %>">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </a>
+                    <a class="icon-link" href="/home/delete?username=<%= rows[i].username %>">
+                        <i class="fa-solid fa-trash"></i>
+                    </a>
                 </td>
             </tr>
             <% } %>
