@@ -2,8 +2,9 @@ import express from "express";
 import dotenv from "dotenv/config";
 import { getParamsURL, getPath } from "./getURL";
 import viewEngine from "./viewEngine";
-import WebRoute from "./Route/webRoute.js"
+import WebRoute from "./Route/webRoute.js";
 import bodyParser from "body-parser";
+import session from "express-session";
 const app = express();
 const port = process.env.PORT;
 viewEngine(app);
@@ -38,6 +39,20 @@ app.use(bodyParser.json());
 // app.get("/", (req, res) => {
 //   res.render("main");
 // })
+
+app.use(
+  session({
+    // key: 'session_key',
+    secret: "secret",
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false },
+  })
+);
+app.use((req, res, next) => {
+  res.locals.session = req.session;
+  next();
+});
 
 app.use(WebRoute);
 

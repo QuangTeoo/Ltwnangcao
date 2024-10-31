@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+             body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            width: 100%;
+            /* max-width: 400px; */
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container d-flex justify-content-center align-items-center">
+        <div class="col-md-6">
+            <form class="row g-3 mt-3" action="/auth/signup" method="POST">
+                <h2 class="text-center mb-4">Sign Up</h2>
+                <div class="col-12">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" name="username" required>
+                </div>
+                <div class="col-12">
+                    <label for="inputPassword4" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="inputPassword4" name="password" required>
+                </div>
+                <div class="col-12">
+                    <label for="inputEmail4" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="inputEmail4" name="email" required>
+                </div>
+                <div class="col-12">
+                    <label for="displayname" class="form-label">Displayname</label>
+                    <input type="text" class="form-control" id="displayname" name="fullname" required>
+                </div>
+                <div class="col-12">
+                    <label for="sex" class="form-label">Sex</label>
+                    <input type="text" class="form-control" id="sex" name="sex" required>
+                </div>
+                <div class="col-12">
+                    <label for="inputAddress" class="form-label">Địa chỉ</label>
+                    <input type="text" class="form-control" id="inputAddress" name="address" required>
+                </div>
+                <div class="col-12">
+                    <button class="btn btn-primary btn-block mt-3" type="submit">Create</button>
+                </div>
+            </form>
+            <a class="btn btn-outline-secondary btn-block mt-3" type="button" href="/auth/login">Login</a>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
