@@ -1,8 +1,7 @@
-<form class="row g-3 mt-3" action="/home/update" method="POST">
-    <input type="hidden" name="oldUsername" value="<%= user.username %>">
+<form class="row g-3 mt-3" action="/home/update/<%= user.username %>" method="POST">
     <div class="col-md-6">
         <label for="username" class="form-label">Username</label>
-        <input type="text" class="form-control" id="username" name="username" value="<%= user.username %>" >
+        <input type="text" class="form-control" id="username" name="username" value="<%= user.username %>">
     </div>
     <div class="col-md-6">
         <label for="inputEmail4" class="form-label">Email</label>
@@ -19,8 +18,8 @@
     <div class="col-md-6">
         <label for="sex" class="form-label">Sex</label>
         <select class="form-control" id="sex" name="sex" required>
-            <option value="0" <%=user.sex=== 1 ? 'selected' : '' %>>Nam</option>
-            <option value="1" <%=user.sex=== 0 ? 'selected' : '' %>>Nữ</option>
+            <option value="0" <%=user.sex===0 ? 'selected' : '' %>>Nữ</option>
+            <option value="1" <%=user.sex===1 ? 'selected' : '' %>>Nam</option>
         </select>
     </div>
     <div class="col-12">

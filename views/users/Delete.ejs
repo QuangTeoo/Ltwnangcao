@@ -4,8 +4,7 @@
             <%= user.username %>
         </strong>?
     </div>
-    <form class="row g-3 mt-3" action="/home/delete" method="POST">
-        <input type="hidden" name="username" value="<%= user.username %>">
+    <form class="row g-3 mt-3" action="/home/delete/<%= user.username %>" method="POST">
         <div class="d-flex justify-content-center">
             <button type="submit" class="btn btn-danger">Delete</button>
         </div>

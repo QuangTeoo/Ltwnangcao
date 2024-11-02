@@ -42,13 +42,13 @@
                     <%= rows[i].role %>
                 </td>
                 <td>
-                    <a href="/home/detail?username=<%= rows[i].username %>">
+                    <a href="/home/detail/<%= rows[i].username %>">
                         <i class="fa-solid fa-eye"></i>
                     </a>
-                    <a class="icon-link" href="/home/update?username=<%= rows[i].username %>">
+                    <a class="icon-link" href="/home/update/<%= rows[i].username %>">
                         <i class="fa-solid fa-pen-to-square"></i>
                     </a>
-                    <a class="icon-link" href="/home/delete?username=<%= rows[i].username %>">
+                    <a class="icon-link" href="/home/delete/<%= rows[i].username %>">
                         <i class="fa-solid fa-trash"></i>
                     </a>
                 </td>

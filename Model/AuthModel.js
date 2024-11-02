@@ -11,7 +11,7 @@ const signup = async (user) => {
 };
 
 const findUserFindByUserName = async (username) => {
-  const [user] = await pool.query("SELECT * FROM users WHERE username = ?", [
+  const [user] = await pool.query("SELECT * FROM users WHERE username = ? AND status = 1", [
     username,
   ]);
   return user[0];

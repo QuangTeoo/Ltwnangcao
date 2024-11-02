@@ -1,4 +1,5 @@
 import HomeModel from "../Model/HomeModel";
+import bcrypt from "bcryptjs";
 const getAllUser = async (req, res) => {
   const users = await HomeModel.getAllUser();
   res.render("main", {
@@ -16,15 +17,16 @@ const addUser = async (req, res) => {
     return;
   } else if (req.method === "POST") {
     const user = req.body;
+    user.password = await bcrypt.hash(user.password, 10);
     const result = await HomeModel.addUser(user);
-    console.log(result);
+    // console.log(result);
     res.redirect("/home");
   }
 };
 
 const updateUser = async (req, res) => {
   if (req.method === "GET") {
-    const username = req.query.username;
+    const username = req.params.username;
     const user = await HomeModel.getUserByUsername(username);
     res.render("main", {
       title: "Home Page ",
@@ -32,7 +34,7 @@ const updateUser = async (req, res) => {
       user: user,
     });
   } else if (req.method === "POST") {
-    const oldUsername = req.body.oldUsername;
+    const oldUsername = req.params.username;
     const user = {
       username: req.body.username,
       fullname: req.body.fullname,
@@ -47,7 +49,7 @@ const updateUser = async (req, res) => {
 };
 const deleteUser = async (req, res) => {
   if (req.method === "GET") {
-    const username = req.query.username;
+    const username = req.params.username;
     const user = await HomeModel.getUserByUsername(username);
     if (!user) {
       return res.status(404).send("User not found");
@@ -58,7 +60,7 @@ const deleteUser = async (req, res) => {
       user: user,
     });
   } else if (req.method === "POST") {
-    const username = req.body.username;
+    const username = req.params.username;
     const result = await HomeModel.deleteUser(username);
     console.log(result);
     res.redirect("/home");

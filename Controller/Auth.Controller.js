@@ -10,20 +10,19 @@ const login = async (req, res) => {
   } else if (req.method === "POST") {
     const { username, password } = req.body;
     const user = await AuthModel.findUserFindByUserName(username);
-    console.log(user, password);
+    // console.log(user, password);
     if (!user || user.length === 0) {
       return res.status(400).send("User not found");
     }
     const isPasswordMatch = await bcrypt.compare(password, user.password);
-    console.log(isPasswordMatch);
+    // console.log(isPasswordMatch);
     if (!isPasswordMatch) {
-      console.log(`${password} ${user.password}`);
+      // console.log(`${password} ${user.password}`);
       return res.status(401).send("Username or Password not match");
     } else {
       req.session.user = {
         username: user.username,
         fullname: user.fullname,
-        // email: user.email,
         role: user.role,
       };
       res.redirect("/home");
@@ -39,15 +38,19 @@ const signup = async (req, res) => {
     return;
   } else if (req.method === "POST") {
     const user = req.body;
-    console.log(user);
+    // console.log(user);
     user.password = await bcrypt.hash(user.password, 10);
     const result = await AuthModel.signup(user);
-    console.log(result);
+    // console.log(result);
     res.redirect("/auth/login");
   }
 };
-
+const logout = async (req, res) => {
+  req.session.destroy();
+  res.redirect("/auth/login");
+};
 export default {
   login,
   signup,
+  logout,
 };

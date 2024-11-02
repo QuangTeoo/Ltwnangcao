@@ -33,7 +33,7 @@ const updateUser = async (oldUsername,user) => {
 const deleteUser = async (username) => {
   const [result] = await pool.query(
     "UPDATE users SET status = 0 WHERE username = ?",
-    [username]
+    [username]  
   );
   return result;
 };
