@@ -1,7 +1,19 @@
 import HomeModel from "../Model/HomeModel";
 import bcrypt from "bcryptjs";
+import User from "../SqueModel/UserSeque";
+
+// const getAllUser = async (req, res) => {
+//   const users = await HomeModel.getAllUser();
+//   res.render("main", {
+//     title: "Home Page ",
+//     body: "home",
+//     rows: users,
+//   });
+// };
+
 const getAllUser = async (req, res) => {
-  const users = await HomeModel.getAllUser();
+  const users = await User.findAll();
+  console.log(users);
   res.render("main", {
     title: "Home Page ",
     body: "home",

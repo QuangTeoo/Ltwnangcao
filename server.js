@@ -5,6 +5,7 @@ import viewEngine from "./viewEngine";
 import WebRoute from "./Route/webRoute.js";
 import bodyParser from "body-parser";
 import session from "express-session";
+import sequelize from "./DB/db";
 const app = express();
 const port = process.env.PORT;
 viewEngine(app);
@@ -56,6 +57,17 @@ app.use((req, res, next) => {
 
 app.use(WebRoute);
 
+app.use((req, res, next) => {
+  res.redirect("https://http.cat/404");
+});
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log("Connect DB success");
+  })
+  .catch((err) => {
+    console.log("Connect DB fail", err);
+  });
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
