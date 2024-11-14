@@ -1,0 +1,17 @@
+meta {
+  name: createNhom
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:3000/api/v1/sanpham/nhom/create
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "ten":"Linh kiện điện tử"
+  }
+}
