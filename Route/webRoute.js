@@ -7,6 +7,7 @@ import AuthMiddleware from "../Middleware/AuthMiddleware.js";
 import UserApiController from "../Api/UserApiController.js";
 import AuthApiController from "../Api/AuthApiController.js";
 import SanphamApiController from "../Api/SanphamApiController.js";
+import authenticataToken from "../Middleware/AuthApiMiddleWare.js";
 const webRoute = Router();
 
 webRoute.get("/", HomeController.getAllUser);
@@ -69,7 +70,23 @@ webRoute.delete("/api/v1/users/:username", UserApiController.deleteOne);
 webRoute.get("/api/v1/sanpham/nhom/all", SanphamApiController.getAll);
 webRoute.post("/api/v1/sanpham/nhom/create", SanphamApiController.createNhom);
 webRoute.get("/api/v1/sanpham/all", SanphamApiController.getAllSanPham);
+webRoute.get(
+  "/api/v1/nhom/sanpham/:nhomId",
+  SanphamApiController.getSanPhamByNhom
+);
+webRoute.post("/api/v1/sanpham/create", SanphamApiController.createSanPham);
+
 webRoute.get("/api/v1/sanpham/detail/:id", SanphamApiController.detailSanPham);
+
 webRoute.post("/api/v1/auth/login", AuthApiController.login);
-webRoute.post("/api/v1/auth/logout", AuthApiController.logout);
+webRoute.post(
+  "/api/v1/auth/logout",
+  authenticataToken,
+  AuthApiController.logout
+);
+webRoute.get(
+  "/api/v1/auth/profile",
+  authenticataToken,
+  AuthApiController.getProfile
+);
 export default webRoute;

@@ -6,14 +6,21 @@ import WebRoute from "./Route/webRoute.js";
 import bodyParser from "body-parser";
 import session from "express-session";
 import sequelize from "./DB/db";
+import cors from "cors";
+import cookieParser from "cookie-parser";
 const app = express();
 const port = process.env.PORT;
 viewEngine(app);
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
-
+app.use(cookieParser());
+app.use(
+  cors({
+    origin: "http://localhost:3001",
+    credentials: true,
+  })
+);
 // app.get("/", (req, res) => {
 //   res.send("Hello World!");
 // });

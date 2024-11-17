@@ -1,0 +1,20 @@
+meta {
+  name: CreateSanPham
+  type: http
+  seq: 4
+}
+
+post {
+  url: http://localhost:3000/api/v1/sanpham/create
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "ten":"Tụ điện 100uF",
+    "gia":"5",
+    "mota":"Tụ điện dung lượng lớn",
+    "idnhom":"5"
+  }
+}

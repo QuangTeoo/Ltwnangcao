@@ -47,5 +47,36 @@ async function detailSanPham(req, res) {
       res.status(500).send(err);
     });
 }
-
-export default { getAll, getAllSanPham, detailSanPham, createNhom };
+async function getSanPhamByNhom(req, res) {
+  const nhomId = req.params.nhomId;
+  const data = await sanPhamModel
+    .getSanPhamByNhom(nhomId)
+    .then((data) => {
+      if (!data) {
+        res.status(404).send("Not found");
+      }
+      res.json(data);
+    })
+    .catch((err) => {
+      res.status(500).send(err);
+    });
+}
+async function createSanPham(req, res) {
+  const sanPham = req.body;
+  const data = await sanPhamModel
+    .createSanPham(sanPham)
+    .then(() => {
+      res.json("Create success");
+    })
+    .catch((err) => {
+      res.status(500).send(err);
+    });
+}
+export default {
+  getAll,
+  getAllSanPham,
+  detailSanPham,
+  createNhom,
+  getSanPhamByNhom,
+  createSanPham,
+};

@@ -16,6 +16,7 @@ const checkRole = (role) => {
     res.status(403).send("You are not allowed to access this function");
   };
 };
+
 export default {
   checkRole,
 };
